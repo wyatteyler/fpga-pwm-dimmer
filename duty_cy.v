@@ -4,7 +4,7 @@ module duty_cy (
 	input slow_tick,											// from clk_div, think of it as enable 
 	input btn_up,												// increments duty cycle
 	input btn_down,												// reduces duty cycle
-	output reg [7:0] out_duty );								// duty_cycle (0-255) drives pwm threshold
+	output reg [7:0] out_duty );								// duty cycle (0-255) drives pwm threshold
 	
 	always @(posedge clk) begin
 	
