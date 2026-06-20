@@ -1,16 +1,16 @@
 module pwm_top (
-	input clk,
+	input clk,						// connected to pin K17
 	input reset,
-	input btn_up_raw,
+	input btn_up_raw,				// btn_up_raw is connected to one of the button pins, same for btn_down_raw
 	input btn_down_raw,
-	output eth_rst_b,
+	output eth_rst_b,				// connected to pin E17
 	output out_pwm );
 	
-	assign eth_rst_b = 1'b1;
+	assign eth_rst_b = 1'b1;		// required for the 125MHz clock on pin K17 to run on Zybo Z7-10, holds Ethernet PHY out of reset 
 	
 	wire [7:0] out_duty;
 	wire slow_tick;
-	wire btn_up_clean;
+	wire btn_up_clean;				// two btn_debounce instances for both btn_up and btn_down, need wire for both
 	wire btn_down_clean;
 	
 	clk_div u_clkdiv (
